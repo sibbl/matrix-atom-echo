@@ -1,0 +1,73 @@
+menu "Matrix Atom Echo"
+
+config MATRIX_ATOM_ECHO_BRIDGE_BASE_URL
+    string "Bridge base URL"
+    default "http://localhost:3000"
+
+config MATRIX_ATOM_ECHO_DEVICE_ID
+    string "Device ID"
+    default "default"
+
+config MATRIX_ATOM_ECHO_WIFI_SSID
+    string "Wi-Fi SSID"
+    default ""
+
+config MATRIX_ATOM_ECHO_WIFI_PASSWORD
+    string "Wi-Fi password"
+    default ""
+
+config MATRIX_ATOM_ECHO_BUTTON_GPIO
+    int "Button GPIO"
+    default 0
+
+config MATRIX_ATOM_ECHO_POLL_INTERVAL_MS
+    int "Next-audio poll interval (ms)"
+    range 250 60000
+    default 3000
+
+config MATRIX_ATOM_ECHO_HEALTH_INTERVAL_MS
+    int "Health-check interval (ms)"
+    range 1000 60000
+    default 15000
+
+config MATRIX_ATOM_ECHO_HTTP_TIMEOUT_MS
+    int "HTTP timeout (ms)"
+    range 1000 30000
+    default 5000
+
+config MATRIX_ATOM_ECHO_BUTTON_POLL_MS
+    int "Button poll interval (ms)"
+    range 5 200
+    default 25
+
+config MATRIX_ATOM_ECHO_MAX_AUDIO_BYTES
+    int "Maximum audio payload bytes"
+    range 4096 262144
+    default 65536
+
+config MATRIX_ATOM_ECHO_MAX_RECORDING_MS
+    int "Maximum synthetic recording duration (ms)"
+    range 250 10000
+    default 3000
+
+config MATRIX_ATOM_ECHO_LONG_PRESS_MS
+    int "Long-press threshold (ms)"
+    range 100 5000
+    default 700
+
+config MATRIX_ATOM_ECHO_DOUBLE_PRESS_GAP_MS
+    int "Double-press gap (ms)"
+    range 50 2000
+    default 250
+
+config MATRIX_ATOM_ECHO_WIFI_CONNECT_TIMEOUT_MS
+    int "Wi-Fi connect timeout (ms)"
+    range 1000 60000
+    default 20000
+
+config MATRIX_ATOM_ECHO_WIFI_MAX_RETRIES
+    int "Wi-Fi retry count"
+    range 1 20
+    default 5
+
+endmenu

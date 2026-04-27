@@ -1,0 +1,7 @@
+dist
+node_modules
+test
+vitest.config.ts
+npm-debug.log
+.env
+.env.*

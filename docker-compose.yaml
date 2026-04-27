@@ -1,0 +1,30 @@
+services:
+  bridge:
+    image: ${GHCR_IMAGE:-ghcr.io/sibbl/matrix-atom-echo-bridge:latest}
+    container_name: matrix-atom-echo-bridge
+    restart: unless-stopped
+    ports:
+      - "${BRIDGE_PORT:-3000}:3000"
+    environment:
+      PORT: "3000"
+      BRIDGE_HOST: "0.0.0.0"
+      BRIDGE_BASE_URL: ${BRIDGE_BASE_URL:-http://YOUR_LAN_IP:3000}
+      BRIDGE_REPLY_MODE: ${BRIDGE_REPLY_MODE:-echo}
+      DEVICE_AUTH_TOKEN: ${DEVICE_AUTH_TOKEN:-change-me-device-token}
+      BRIDGE_BASIC_AUTH_USERNAME: ${BRIDGE_BASIC_AUTH_USERNAME:-}
+      BRIDGE_BASIC_AUTH_PASSWORD: ${BRIDGE_BASIC_AUTH_PASSWORD:-}
+      MATRIX_HOMESERVER_URL: ${MATRIX_HOMESERVER_URL:-}
+      MATRIX_ACCESS_TOKEN: ${MATRIX_ACCESS_TOKEN:-}
+      MATRIX_ROOM_ID: ${MATRIX_ROOM_ID:-}
+      MATRIX_USER_ID: ${MATRIX_USER_ID:-}
+      MATRIX_BOT_USER_ID: ${MATRIX_BOT_USER_ID:-}
+      ELEVENLABS_API_KEY: ${ELEVENLABS_API_KEY:-}
+      ELEVENLABS_VOICE_ID: ${ELEVENLABS_VOICE_ID:-}
+      ELEVENLABS_MODEL_ID: ${ELEVENLABS_MODEL_ID:-eleven_multilingual_v2}
+      ELEVENLABS_OUTPUT_FORMAT: ${ELEVENLABS_OUTPUT_FORMAT:-mp3_44100_128}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/health >/dev/null"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

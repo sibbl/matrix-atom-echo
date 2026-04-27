@@ -1,0 +1,21 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "app_config.c"
+        "bridge_url.c"
+        "button_controller.c"
+        "retry_policy.c"
+        "state_machine.c"
+        "wav_encoder.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRES
+        esp_driver_gpio
+        esp_driver_uart
+        esp_event
+        esp_http_client
+        esp_netif
+        esp_timer
+        esp_wifi
+        nvs_flash
+)
